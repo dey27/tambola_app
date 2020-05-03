@@ -1,0 +1,60 @@
+<app-navbar></app-navbar>
+<div class="container-fluid">
+    <div class="row">
+
+        <app-sidenav></app-sidenav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <h2>Tickets</h2>
+            <div class="card shadow-sm p-3 mb-5 bg-white rounded">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-condensed table-bordered table-sm">
+                            <tbody>
+                                <tr>
+                                    <td *ngFor="let first of firstRow" [attr.id]="(first != '0' ? first : null)"
+                                        (click)="selection(first)">{{first}}</td>
+                                </tr>
+                                <tr>
+                                    <td *ngFor="let second of secondRow" [attr.id]="(second != '0' ? second : null)"
+                                        (click)="selection(second)">{{second}}</td>
+                                </tr>
+                                <tr>
+                                    <td *ngFor="let third of thirdRow" [attr.id]="(third != '0' ? third : null)"
+                                        (click)="selection(third)">{{third}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div style="float: left; display: flex;">
+                <div *ngIf="playerRole == 'creator'" class="card shadow-sm p-3 mb-5 bg-white rounded" style="width: 18rem;margin-left: 15px;">
+                    <div class="card-body">
+                        <h5 class="card-title">Numbers</h5>
+                        <h1 class="card-text">{{showNumber}}</h1>
+                        <button type="button" class="btn btn-primary" (click)="next()">Next Number</button>
+                    </div>
+                </div>
+                <div class="card shadow-sm p-3 mb-5 bg-white rounded" style="width: 18rem;margin-left: 15px;">
+                    <div class="card-body">
+                        <h5 class="card-title">Numbers Broadcasted</h5>
+                        <h1 class="card-text">{{showNumber}}</h1>
+                    </div>
+                </div>
+                <div *ngIf="playerRole == 'creator'" class="card shadow-sm p-3 mb-5 bg-white rounded" style="width: 18rem;margin-left: 15px;">
+                    <div class="card-body">
+                        <h5 class="card-title">Gaming Join Key</h5>
+                        <h3  style="color: green;" class="card-text">{{gameKey}}</h3>
+                        <!-- <input type="text" #inputTarget [value]='gameKey' /> -->
+                        <!-- <button type="button" class="btn btn-success" [ngxClipboard]="inputTarget">copy</button> -->
+                    </div>
+                </div>
+               
+            </div>
+            
+            
+
+        </main>
+    </div>
+</div>

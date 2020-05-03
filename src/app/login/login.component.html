@@ -1,0 +1,44 @@
+<div class="container-fluid h-100">
+    <div class="row h-100">
+        <div class="col-lg-12 d-flex justify-content-center">
+            <div class="card login-style text-right shadow-lg p-3 mb-5 bg-white rounded">
+                <div class="card-body">
+                    <h5 class="card-title" style="margin-right: 25%;">Start Game</h5>
+                    <button [hidden]='hide' type="button" class="btn btn-primary button-style"
+                        (click)='createGame()'>Create Game</button>
+                    <form #create="ngForm" *ngIf="hideButtons === 'created'">
+                        <div class="form-group">
+                            <input required minlength="2" maxlength="10" ngModel name="creator" #creator="ngModel"
+                                type="text" class="form-control" placeholder="Enter Name" id="creator"
+                                aria-describedby="creator-name">
+                            <br>
+                            <button [routerLink]="['/playground']" [disabled]="!create.valid" type="button" class="btn btn-primary button-style"
+                                (click)=" setRole('creator',creator.value,'')">Start</button>
+                            <br><br>
+                            <span class="back-style" (click)="backFunc()">Back</span>
+                        </div>
+                    </form>
+                    <form #join="ngForm" *ngIf="hideButtons === 'joined'">
+                        <div class="form-group">
+                            <input required minlength="2" maxlength="10" ngModel name="joinee" #joinee="ngModel"
+                                type="text" class="form-control" placeholder="Enter Name" id="joinee"
+                                aria-describedby="joinee-name">
+                            <br>
+                            <input required minlength="8" ngModel name="join_code" #join_code="ngModel" type="text"
+                                class="form-control" placeholder="Enter Code to join" id="join_code"
+                                aria-describedby="join-code">
+                            <br>
+                            <button [routerLink]="['/playground']" [disabled]="!join.valid" type="button" class="btn btn-success button-style"
+                                (click)=" setRole('joinee',joinee.value,join_code.value)">Join</button>
+                            <br><br>
+                            <span class="back-style" (click)="backFunc()">Back</span>
+                        </div>
+                    </form>
+                    <br><br>
+                    <button [hidden]='hide' type="button" class="btn btn-success button-style" (click)='joinGame()'>Join
+                        Game</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
